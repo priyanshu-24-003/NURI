@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{appname}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+
+   
+       <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Market_view</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/alerts">alerts</a>
+        </li>
+ <!--        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul> -->
+<!--       <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+    </div>
+  </div>
+</nav>
+
+  <div class="container" style="text-align: center;">
+      <h2>All_Of_Alerts</h2>
+  </div>
+
+
+<div class="container">
+<table class="table">
+
+  <tbody>
+    {% for k,v in alert_details.items()%}
+    {% if k == "price" %}
+      {% for key, value in v.items()%}
+      <th>{{value}}</th>
+      {% endfor %}
+      <!-- <th>Modify</th> -->
+      <th>Delete<th>
+
+      {% else %}
+
+    <tr>
+
+      {% for key, value in v.items()%}
+      <td>{{value}}</td>
+      {% endfor %}
+      <!-- <td>modify</td> -->
+      <td><a href="/delete/{{v['alert_price']}}" class='btn btn-danger'>delete</a><td>
+
+      {% endif %}
+  <!-- <li>{{k}}{{v}}</li> -->
+      
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+</div>
+
+<div class='container'>
+<a href="/startalert" class='btn btn-success'>start_alert</a>
+
+<a href="/endalert" class='btn btn-danger'>end_alert</a>
+</div>
+
+
+<div  class="container">
+  <h4>
+    Some_Point_To_Keep_In_Mind:
+  </h4>
+      <li>
+        you have pre alerts at the day's starting
+      </li>
+      <li>
+        you pressed startalert at the starting of day
+      </li>
+      <li>
+        you pressed endalert at the end of day
+      </li>
+      <li>
+        it's good to restart the process by ending alert and restartingalerts when in doubt
+      </li>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+      
+    </script>
+  </body>
+</html>
